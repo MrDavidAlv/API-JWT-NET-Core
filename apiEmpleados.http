@@ -1,0 +1,33 @@
+### Registro de Usuario
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "nombreUsuario": "usertest",
+  "contraseña": "passtest"
+}
+
+### Inicio de Sesión
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+  "nombreUsuario": "usertest",
+  "contraseña": "passtest"
+}
+
+### Obtener el token JWT de la respuesta del inicio de sesión y reemplazarlo en las siguientes solicitudes
+
+### Crear Tarea
+POST http://localhost:5000/tareas
+Content-Type: application/json
+Authorization: Bearer {{JWT_TOKEN}}
+
+{
+  "titulo": "Nueva tarea",
+  "descripcion": "Descripción de la tarea"
+}
+
+### Listar Tareas
+GET http://localhost:5000/tareas
+Authorization: Bearer {{JWT_TOKEN}}
